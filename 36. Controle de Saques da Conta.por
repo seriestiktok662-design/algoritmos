@@ -5,31 +5,28 @@ programa{
 		real saldo = 500.00
 		real saque
 
-		// O laço continua enquanto houver saldo disponível
+		// O laço roda enquanto o saldo for maior que zero
 		enquanto (saldo > 0)
 		{
 			escreva("Saldo atual: R$ ", saldo, "\n")
 			escreva("Digite o valor do saque: R$ ")
 			leia(saque)
 
-			// Validação para evitar saques maiores que o saldo ou valores negativos
-			se (saque <= 0)
+			// Verifica se o valor do saque é maior do que o saldo disponível
+			se (saque > saldo)
 			{
-				escreva("Valor inválido! O valor do saque deve ser maior que zero.\n\n")
-			}
-			senao se (saque > saldo)
-			{
-				escreva("Saldo insuficiente! O valor máximo para saque é R$ ", saldo, ".\n\n")
+				escreva("Saldo Insuficiente\n\n")
 			}
 			senao
 			{
+				// Abate o valor do saldo
 				saldo = saldo - saque
 				escreva("Saque realizado com sucesso!\n\n")
 			}
 		}
 
-		// Mensagem ao zerar o saldo
+		// Mensagem exibida ao sair do laço (quando saldo zerar)
 		limpa()
-		escreva("Seu saldo foi zerado. Não há mais limite disponível para saques!\n")
+		escreva("Sua conta está zerada\n")
 	}
 }
